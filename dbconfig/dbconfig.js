@@ -2,7 +2,7 @@ const mongoose  = require("mongoose")
 
 exports.dbConfiguration=async()=>{
     try {
-        const result = await mongoose.connect('mongodb+srv://admin123:EEKH5syXCX4Ujhtu@cluster0.zjpvb1r.mongodb.net/')
+        const result = await mongoose.connect(process.env.MONGO_URI)
         return result;
     } catch (error) {
         console.log(error)
