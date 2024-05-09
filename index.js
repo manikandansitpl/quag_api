@@ -34,3 +34,15 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT,()=>{
     console.log(`${PORT} is running`)
 })
+
+
+
+// io.on("connection",(socket)=>{
+//     console.log(socket.id);
+
+//     socket.bradcast.to().emit
+
+//     socket.on("disconnect",()=>{
+//         console.log("user got disconnected")
+//     })
+// })

@@ -35,7 +35,7 @@ exports.login=async(req,res,next)=>{
     try {
         if(!password || !email) return errorhandlers(400 , "you Have Missed Some fields!!",res);
 
-        const existingUser = await User.findOne({email});
+        const existingUser = await User?.findOne({email});
           
         if(!existingUser) return errorhandlers(404 ,"user not found please signup first !!",res);
 
