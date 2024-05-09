@@ -1,14 +1,13 @@
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
-const env = require('dotenv');
+const env = require('dotenv').config();
 // const {Server} = require('socket.io');
 const AuthRoute = require('./routes/AuthRoute');
 const { dbConfiguration } = require('./dbconfig/dbconfig');
 const RoomRoute = require('./routes/RoomRoute');
 const MessageRoute = require('./routes/MessageRoute');
 
-env.config()
 
 const app = express();
 const server = http.createServer(app);
@@ -32,13 +31,13 @@ app.use('/api/message',MessageRoute)
 const PORT = process.env.PORT || 3000;
 
 dbConfiguration().then(()=>{
-    server.listen(PORT,()=>{
-        console.log(`${PORT} is running`)
-    })
     console.log("db connected")
 }).catch(()=>console.log("error to connect db"))
 
 
+server.listen(PORT,()=>{
+    console.log(`${PORT} is running`)
+})
 
 
 // io.on("connection",(socket)=>{
