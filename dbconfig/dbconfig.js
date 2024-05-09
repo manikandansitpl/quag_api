@@ -2,7 +2,8 @@ const mongoose  = require("mongoose")
 
 exports.dbConfiguration=async()=>{
     try {
-        const result = await mongoose.connect(process.env.MONGO_URI)
+        const dbURI = process.env.MONGODB_URI;
+        const result = await mongoose.connect(dbURI,{ useNewUrlParser: true, useUnifiedTopology: true })
         return result;
     } catch (error) {
         console.log(error)
