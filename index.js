@@ -13,7 +13,7 @@ env.config()
 const app = express();
 const server = http.createServer(app);
 
-dbConfiguration().then(()=>console.log("db connected")).catch(()=>console.log("error to connect db"))
+
 
 app.use(cors());
 app.use(express.json());
@@ -31,9 +31,13 @@ app.use('/api/message',MessageRoute)
 // })
 const PORT = process.env.PORT || 3000;
 
-server.listen(PORT,()=>{
-    console.log(`${PORT} is running`)
-})
+dbConfiguration().then(()=>{
+    server.listen(PORT,()=>{
+        console.log(`${PORT} is running`)
+    })
+    console.log("db connected")
+}).catch(()=>console.log("error to connect db"))
+
 
 
 
